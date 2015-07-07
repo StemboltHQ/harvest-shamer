@@ -5,7 +5,9 @@ Tool used to keep track of harvest users and notify them when they forget to tra
 
 ## Installation
 
-TODO: write installation instructions
+Clone the git repository
+
+run `bundle install`
 
 ## Usage
 
