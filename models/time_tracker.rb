@@ -19,7 +19,7 @@ class TimeTracker
     begin
       @hardy_client.users.all
     rescue Harvest::NotFound
-      puts "The credentials you have configured do not have administrative privileges, you can only access your timers"
+      Log.print "The credentials you have configured do not have administrative privileges, you can only access your timers"
       [current_harvest_user]
     end
   end
