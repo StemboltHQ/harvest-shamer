@@ -1,0 +1,4 @@
+harvest:
+  subdomain: freerunningtech
+  username: harvest_email
+  password: harvest_password
