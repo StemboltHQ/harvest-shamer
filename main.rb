@@ -1,3 +1,6 @@
 require_relative 'config/requirements'
 
-#main script goes here
+settings = Settings.new('settings.yml')
+
+application = Application.new(settings)
+application.shame_all
