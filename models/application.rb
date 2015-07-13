@@ -6,6 +6,6 @@ class Application
   end
 
   def shame_all
-    #code for shame task goes here
+    time_tracker = TimeTracker.new(Time.now, settings.harvest.subdomain, settings.harvest.username, settings.harvest.password)
   end
 end
