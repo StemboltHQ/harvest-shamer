@@ -17,8 +17,18 @@ require_relative '../config/requirements.rb'
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+include Mail::Matchers
+
+
 RSpec.configure do |config|
 
+  config.before :each do
+    Mail::TestMailer.deliveries.clear
+    Mail.defaults do
+      delivery_method :test
+    end
+  end
   #opening in append mode adds the file if non existant and preserves it if it exists
   #below stores original file
   config.before :all do

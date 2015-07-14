@@ -2,3 +2,10 @@ harvest:
   subdomain: freerunningtech
   username: harvest_email
   password: harvest_password
+
+mailer:
+  smtp: smtp.server
+  smtp_port: 000
+  domain: email.com
+  username: user@email.com
+  password: password
