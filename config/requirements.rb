@@ -8,5 +8,6 @@ require_relative '../models/user'
 require_relative '../models/log'
 require_relative '../models/notification'
 require_relative '../models/notes_notification'
+require_relative '../models/entries_notification'
 
 Bundler.require(:default)
