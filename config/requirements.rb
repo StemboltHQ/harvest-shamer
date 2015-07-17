@@ -7,5 +7,6 @@ require_relative '../models/time_tracker'
 require_relative '../models/user'
 require_relative '../models/log'
 require_relative '../models/notification'
+require_relative '../models/notes_notification'
 
 Bundler.require(:default)
