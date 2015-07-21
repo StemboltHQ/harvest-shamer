@@ -28,10 +28,30 @@ class TimeTracker
     Harvest::User.new(first_name: @username, last_name: "", email: @username)
   end
 
+  def notifications
+    entry_notifications + message_notifications
+  end
+
   private
 
   def to_user(harvest_user)
     User.new(first_name: harvest_user.first_name, last_name: harvest_user.last_name, email: harvest_user.email, entries: entries(harvest_user))
+  end
+
+  def users_without_time_entries
+    users.select { |user| user.missing_entries? }
+  end
+
+  def entry_notifications
+    users_without_time_entries.map { |user| EntriesNotification.new(user, current_harvest_user) }
+  end
+
+  def users_missing_notes
+    users.select { |user| user.missing_notes? }
+  end
+
+  def message_notifications
+    users_missing_notes.map { |user| NotesNotification.new(user, current_harvest_user) }
   end
 
   def get_hardy_client

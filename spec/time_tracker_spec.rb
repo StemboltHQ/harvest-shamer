@@ -64,4 +64,24 @@ RSpec.describe TimeTracker do
       expect(subject).to have_attributes(first_name: "testuser", email: "testuser")
     end
   end
+
+  describe "#notifications" do
+    subject { time_tracker.notifications }
+
+    let(:entries_notification) { double("EntriesNotification") }
+    let(:notes_notification) { double("NotesNotification") }
+
+    let(:valid_user) { User.new(entries: [Harvest::TimeEntry.new(notes:"some notes")]) }
+    let(:user_without_entries) { User.new }
+    let(:user_without_notes) { User.new(entries: [Harvest::TimeEntry.new(notes: "")]) }
+
+    before(:each) do
+      allow(time_tracker).to receive(:users).and_return [valid_user, user_without_entries, user_without_notes]
+
+      allow(EntriesNotification).to receive(:new).and_return entries_notification
+      allow(NotesNotification).to receive(:new).and_return notes_notification
+    end
+
+    it { is_expected.to match_array [entries_notification, notes_notification] }
+  end
 end
