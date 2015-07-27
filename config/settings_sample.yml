@@ -9,3 +9,6 @@ mailer:
   domain: email.com
   username: user@email.com
   password: password
+
+slack:
+  webhook_url: slack.com/api/xxxx
