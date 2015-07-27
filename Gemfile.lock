@@ -34,6 +34,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
+    slack-notifier (1.2.1)
     slop (3.6.0)
 
 PLATFORMS
@@ -44,6 +45,7 @@ DEPENDENCIES
   mail
   pry
   rspec
+  slack-notifier
 
 BUNDLED WITH
    1.10.5
