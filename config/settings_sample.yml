@@ -12,3 +12,4 @@ mailer:
 
 slack:
   webhook_url: slack.com/api/xxxx
+  api_key: xxxxxxxxxxx
