@@ -35,14 +35,21 @@ RSpec.configure do |config|
   #below stores original file
   config.before :all do
     File.open('log.txt', 'a') {}
+    File.open('config/users.yml', 'a') {}
     open('log.txt') do |file|
       @old_log = file.readlines
+    end
+    open('config/users.yml') do |file|
+      @old_users = file.readlines
     end
   end
   #restore the original file since testing
   config.after :all do
     open('log.txt', 'w') do |file|
       file.puts @old_log
+    end
+    open('config/users.yml', 'w') do |file|
+      file.puts @old_users
     end
   end
   # rspec-expectations config goes here. You can use an alternate

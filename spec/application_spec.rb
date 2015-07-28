@@ -31,4 +31,24 @@ RSpec.describe Application do
       subject
     end
   end
+
+  describe "#pull_user_data" do
+    subject { application.pull_user_data }
+
+    let(:user) { User.new(email: "test@test.com") }
+
+    let(:response) { { status: 200, body: json, headers: {} } }
+    let(:json) { '{ "members": [{ "name": "bob", "profile": { "email": "test@test.com" } }] }' }
+
+    before(:each) do
+      allow(time_tracker_double).to receive(:users).and_return [user]
+      stub_request(:get, /https:\/\/slack.com\/api/).to_return response
+    end
+
+    it "populates the file with user data" do
+      subject
+      new_hash = YAML::load_file('config/users.yml')
+      expect(new_hash[user.email]).to eq "bob"
+    end
+  end
 end
