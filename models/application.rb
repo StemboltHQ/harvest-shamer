@@ -22,7 +22,7 @@ class Application
     Log.print_date
     time_tracker = TimeTracker.new(Time.now, settings.harvest.subdomain, settings.harvest.username, settings.harvest.password)
     time_tracker.notifications.each do |notification|
-      notification.deliver
+      notification.deliver(settings.slack.webhook_url)
     end
   end
 end

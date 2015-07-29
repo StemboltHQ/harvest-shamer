@@ -1,9 +1,10 @@
 class Settings
-  attr_reader :harvest, :mailer
+  attr_reader :harvest, :mailer, :slack
 
   def initialize(path)
     @harvest = Settings::Harvest.new
     @mailer = Settings::Mailer.new
+    @slack = Settings::Slack.new
 
     hash = YAML::load_file(path)
     hash.each do |settings_key, settings_value|
@@ -21,5 +22,9 @@ class Settings
 
   class Mailer
     attr_accessor :smtp, :smtp_port, :from_name, :from_email, :domain, :username, :password
+  end
+
+  class Slack
+    attr_accessor :webhook_url
   end
 end
