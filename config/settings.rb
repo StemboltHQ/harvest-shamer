@@ -25,6 +25,6 @@ class Settings
   end
 
   class Slack
-    attr_accessor :webhook_url
+    attr_accessor :webhook_url, :api_key
   end
 end
