@@ -5,4 +5,6 @@ gem 'pry'
 gem 'harvested'
 gem 'mail'
 gem 'slack-notifier'
+gem 'jObject'
+
 gem 'webmock', require: false

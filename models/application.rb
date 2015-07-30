@@ -32,7 +32,7 @@ class Application
     user_pairs = slack_api.pair_with_harvest_users(time_tracker.users)
     user_pairs.select! { |key, val| val }
     new_hash = {}
-    user_pairs.each { |key, val| new_hash[key.email] = val["name"] }
+    user_pairs.each { |key, val| new_hash[key.email] = val.name }
     old_hash = YAML::load_file('config/users.yml')
     new_hash.merge!(old_hash)
     open('config/users.yml', 'w') do |file|

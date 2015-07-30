@@ -12,10 +12,10 @@ RSpec.describe SlackAPI do
   describe "#users" do
     subject { slack_api.users }
 
-    let(:json) { '{ "members": [{ "name": "bobby" }] }' }
+    let(:json) { '{ "members": [{ "name": "bobby", "profile": { "email": "test@test.com" } }] }' }
 
     it "returns users" do
-      expect(subject[0]["name"]).to eq "bobby"
+      expect(subject[0].name).to eq "bobby"
     end
   end
 
@@ -27,10 +27,8 @@ RSpec.describe SlackAPI do
 
     let(:json) { '{ "members": [{ "profile": { "email": "test@test.com" } }] }' }
 
-    let(:expected_outcome) { { harvest_user => { "profile" => { "email" => "test@test.com" } } } }
-
     it "pairs the users" do
-      expect(subject).to eq expected_outcome
+      expect(subject[harvest_user].profile.email).to eq "test@test.com"
     end
   end
 end

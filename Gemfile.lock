@@ -14,6 +14,7 @@ GEM
     httparty (0.13.5)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+    jObject (1.0.0)
     json (1.8.3)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
@@ -49,6 +50,7 @@ PLATFORMS
 
 DEPENDENCIES
   harvested
+  jObject
   mail
   pry
   rspec
