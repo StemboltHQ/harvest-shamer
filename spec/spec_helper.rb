@@ -32,6 +32,11 @@ RSpec.configure do |config|
     end
   end
 
+  #only allow settings to load from the test settings
+  config.before :each do
+    allow(Settings).to receive(:new).and_return(Settings.new('spec/support/settings/settings.yml'))
+  end
+
   #clear test log before each test
   config.before :each do
     open(Log.file, 'w') {}
