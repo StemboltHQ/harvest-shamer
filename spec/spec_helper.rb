@@ -20,6 +20,8 @@ require_relative '../config/requirements.rb'
 
 include Mail::Matchers
 
+#tell Log to write to test file
+Log.file = 'spec/support/log/log.txt'
 
 RSpec.configure do |config|
 
@@ -29,19 +31,10 @@ RSpec.configure do |config|
       delivery_method :test
     end
   end
-  #opening in append mode adds the file if non existant and preserves it if it exists
-  #below stores original file
-  config.before :all do
-    File.open('log.txt', 'a') {}
-    open('log.txt') do |file|
-      @old_log = file.readlines
-    end
-  end
-  #restore the original file since testing
-  config.after :all do
-    open('log.txt', 'w') do |file|
-      file.puts @old_log
-    end
+
+  #clear test log before each test
+  config.before :each do
+    open(Log.file, 'w') {}
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
