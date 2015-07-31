@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'net/smtp'
+require 'net/http'
+require 'json'
 require_relative 'settings'
 require_relative '../models/application'
 require_relative '../models/time_tracker'
@@ -9,5 +11,7 @@ require_relative '../models/log'
 require_relative '../models/notification'
 require_relative '../models/notes_notification'
 require_relative '../models/entries_notification'
+require_relative '../models/request.rb'
+require_relative '../models/slack_api'
 
 Bundler.require(:default)
